@@ -2,7 +2,6 @@ import type React from "react"
 import "@/app/globals.css"
 import type { Metadata } from "next"
 import { Inter, Merriweather } from "next/font/google"
-import { ThemeProvider } from "@/components/theme-provider"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -18,8 +17,9 @@ const merriweather = Merriweather({
 })
 
 export const metadata: Metadata = {
-  title: "National Storyline - News Without the Spin",
-  description: "What the Nation's Talking About — Without the Spin",
+  title: "National Storyline - Real News. Verified Voices. No Spin.",
+  description:
+    "National Storyline curates news directly from verified sources on X. We aim to restore trust in media through transparency.",
     generator: 'v0.dev'
 }
 
@@ -29,12 +29,8 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${inter.variable} ${merriweather.variable} font-sans`}>
-        <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
-          {children}
-        </ThemeProvider>
-      </body>
+    <html lang="en">
+      <body className={`${inter.variable} ${merriweather.variable} font-sans`}>{children}</body>
     </html>
   )
 }
