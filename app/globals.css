@@ -4,26 +4,27 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    /* Updated color palette for institutional briefing aesthetic */
+    --background: 0 0% 98%;
+    --foreground: 30 3% 15%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 30 3% 15%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 221 83% 15%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
+    --popover-foreground: 30 3% 15%;
+    --primary: 30 3% 20%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 88%;
+    --secondary-foreground: 30 3% 20%;
+    --muted: 0 0% 85%;
+    --muted-foreground: 30 3% 50%;
+    --accent: 10 75% 50%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 221 83% 15%;
-    --radius: 0.5rem;
+    --border: 0 0% 92%;
+    --input: 0 0% 95%;
+    --ring: 30 3% 20%;
+    --radius: 0.25rem;
   }
 }
 
@@ -60,39 +61,24 @@ html {
 }
 
 ::-webkit-scrollbar-track {
-  background: #f1f5f9;
+  background: #f5f3f0;
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 4px;
+  background: #d4cfc8;
+  border-radius: 2px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+  background: #b8b1a8;
 }
 
 /* Focus styles for accessibility */
 button:focus,
 input:focus,
 a:focus {
-  outline: 2px solid #dc2626;
+  outline: 2px solid #c84d2d;
   outline-offset: 2px;
-}
-
-/* Animation for hover effects */
-@keyframes subtle-bounce {
-  0%,
-  100% {
-    transform: translateY(0);
-  }
-  50% {
-    transform: translateY(-2px);
-  }
-}
-
-.hover-bounce:hover {
-  animation: subtle-bounce 0.3s ease-in-out;
 }
 
 /* Loading states */
