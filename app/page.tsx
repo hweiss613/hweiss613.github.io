@@ -3,14 +3,18 @@
 import { useState, useEffect, useMemo } from "react"
 import Image from "next/image"
 import Link from "next/link"
-import { Search, TrendingUp, Users, RefreshCw } from "lucide-react"
+import { Search, TrendingUp, Users } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
 import { TweetCard } from "@/components/tweet-card"
 import { useTwitterData } from "@/hooks/use-twitter-data"
-import type { ProcessedTweet } from "@/lib/tweet-processor"
+import { StorylineCard } from "@/components/storyline-card"
+import { EmailCapture } from "@/components/email-capture"
+import type { ProcessedTweet, Storyline } from "@/lib/types"
+
+import storylinesData from "@/data/storylines.json"
 
 export default function Home() {
   const [activeFilter, setActiveFilter] = useState("all")
@@ -32,14 +36,16 @@ export default function Home() {
     }
   }, [])
 
+  const allStorylines: Storyline[] = storylinesData.storylines
+
   const menuItems = [
     { id: "all", label: "All", category: "all" },
-    { id: "politics", label: "Politics", category: "politics" },
-    { id: "economy", label: "Economy", category: "economy" },
-    { id: "culture", label: "Culture", category: "culture" },
-    { id: "border", label: "Border", category: "border" },
-    { id: "woke-watch", label: "Woke Watch", category: "culture" },
-    { id: "world", label: "World", category: "world" },
+    { id: "politics", label: "Politics", category: "Politics" },
+    { id: "economy", label: "Economy", category: "Economy" },
+    { id: "culture", label: "Culture", category: "Culture" },
+    { id: "border", label: "Border", category: "Border" },
+    { id: "woke-watch", label: "Woke Watch", category: "Culture" },
+    { id: "world", label: "World", category: "World" },
   ]
 
   // Filter tweets based on search query
@@ -53,6 +59,26 @@ export default function Home() {
         tweet.handle.toLowerCase().includes(searchQuery.toLowerCase()),
     )
   }, [tweets, searchQuery])
+
+  const filteredStorylines = useMemo(() => {
+    let results = allStorylines
+
+    // Filter by category
+    if (activeFilter !== "all") {
+      results = results.filter((storyline) => storyline.category === activeFilter)
+    }
+
+    // Filter by search query
+    if (searchQuery) {
+      results = results.filter(
+        (storyline) =>
+          storyline.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+          storyline.summary.toLowerCase().includes(searchQuery.toLowerCase()),
+      )
+    }
+
+    return results
+  }, [activeFilter, searchQuery])
 
   // Toggle bookmark
   const toggleBookmark = (tweetId: string) => {
@@ -88,24 +114,9 @@ export default function Home() {
     }
   }
 
-  const topSharedHeadlines = [
-    "Government Censorship Documents Leaked",
-    "Border Crisis Reaches Historic Levels",
-    "Tech Giants Face Congressional Scrutiny",
-    "Energy Independence Policies Debated",
-    "School Choice Movement Gains Momentum",
-    "Federal Reserve Signals Rate Changes",
-    "Supreme Court Hears Free Speech Case",
-  ]
+  const topSharedHeadlines = allStorylines.slice(0, 7).map((s) => s.title)
 
-  const editorsPicks = [
-    "The Real Cost of Woke Corporate Policies",
-    "How China Influences American Universities",
-    "Why Traditional Media Is Losing Credibility",
-    "The Rise of Independent Journalism",
-    "America's Energy Revolution Under Threat",
-    "Big Tech's War on Conservative Voices",
-  ]
+  const editorsPicks = allStorylines.flatMap((s) => s.keyPosts.map((p) => p.text)).slice(0, 6)
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -153,7 +164,21 @@ export default function Home() {
                 disabled={loading}
                 className="text-gray-500 hover:text-[#dc2626]"
               >
-                <RefreshCw className={`w-4 h-4 ${loading ? "animate-spin" : ""}`} />
+                <svg
+                  className={`w-4 h-4 ${loading ? "animate-spin" : ""}`}
+                  xmlns="http://www.w3.org/2000/svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                >
+                  <path d="M23 4v6h-6"></path>
+                  <path d="M1 23h6v-6"></path>
+                  <path d="M17 1v6h6"></path>
+                  <path d="M23 17H17V1"></path>
+                </svg>
               </Button>
             </div>
           </div>
@@ -234,7 +259,7 @@ export default function Home() {
                 ))}
               </div>
             ) : (
-              <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {filteredTweets.map((tweet) => (
                   <TweetCard
                     key={tweet.id}
@@ -247,12 +272,24 @@ export default function Home() {
               </div>
             )}
 
-            {filteredTweets.length === 0 && !loading && (
+            {filteredStorylines.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {filteredStorylines.map((storyline) => (
+                  <StorylineCard key={storyline.id} storyline={storyline} />
+                ))}
+              </div>
+            ) : (
               <div className="text-center py-12">
-                <p className="text-gray-500">No tweets found matching your search criteria.</p>
-                <Button variant="outline" onClick={refreshTweets} className="mt-4 bg-transparent">
-                  <RefreshCw className="w-4 h-4 mr-2" />
-                  {isLiveMode ? "Refresh Live Data" : "Refresh Demo Content"}
+                <p className="text-gray-500 mb-4">No storylines found matching your search.</p>
+                <Button
+                  variant="outline"
+                  onClick={() => {
+                    setActiveFilter("all")
+                    setSearchQuery("")
+                  }}
+                  className="bg-transparent"
+                >
+                  Clear Filters
                 </Button>
               </div>
             )}
@@ -265,7 +302,7 @@ export default function Home() {
               <CardContent className="p-4">
                 <h2 className="font-serif text-lg font-bold text-[#1a365d] mb-4 flex items-center">
                   <TrendingUp className="w-5 h-5 mr-2 text-[#dc2626]" />
-                  Top Shared
+                  Top Storylines
                 </h2>
                 <ul className="space-y-3">
                   {topSharedHeadlines.map((headline, index) => (
@@ -289,12 +326,7 @@ export default function Home() {
                 <ul className="space-y-3">
                   {editorsPicks.map((pick, index) => (
                     <li key={index} className="border-b border-gray-100 pb-2 last:border-b-0">
-                      <Link
-                        href="#"
-                        className="text-sm text-black hover:text-[#dc2626] transition-colors leading-tight block"
-                      >
-                        {pick}
-                      </Link>
+                      <p className="text-sm text-black leading-tight line-clamp-2">{pick}</p>
                     </li>
                   ))}
                 </ul>
@@ -319,18 +351,8 @@ export default function Home() {
                     </div>
                   </div>
                   <p className="text-xs text-gray-700 italic">
-                    "Real-time updates from verified voices. Truth over narrative."
+                    "Curated storylines from verified independent journalists. Truth over narrative."
                   </p>
-                  <div className="mt-2 text-xs text-gray-500 flex items-center">
-                    {isLiveMode ? (
-                      <>
-                        <div className="w-2 h-2 bg-green-500 rounded-full mr-2"></div>
-                        Live • {lastUpdated ? lastUpdated.toLocaleTimeString() : "Connected"}
-                      </>
-                    ) : (
-                      <>Demo Mode • {lastUpdated ? lastUpdated.toLocaleTimeString() : "Sample Content"}</>
-                    )}
-                  </div>
                 </div>
               </CardContent>
             </Card>
@@ -344,17 +366,14 @@ export default function Home() {
           {/* Newsletter Signup */}
           <div className="text-center mb-6">
             <h3 className="font-serif text-xl font-bold text-[#1a365d] mb-4">Stay Informed</h3>
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-3 max-w-md mx-auto">
-              <Input type="email" placeholder="Enter your email address" className="flex-1" />
-              <Button className="bg-[#dc2626] hover:bg-[#b91c1c] text-white px-8">Subscribe</Button>
-            </div>
+            <EmailCapture />
           </div>
 
           {/* Disclaimer */}
           <div className="text-center text-sm text-gray-600 max-w-3xl mx-auto mb-6">
             <p>
-              National Storyline curates news directly from verified sources on X. We aim to restore trust in media
-              through transparency.
+              National Storyline curates independent journalism into coherent storylines. We aggregate coverage from
+              verified journalists to restore trust in media through transparency.
             </p>
           </div>
 

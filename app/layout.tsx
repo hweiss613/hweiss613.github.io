@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   title: "National Storyline - Real News. Verified Voices. No Spin.",
   description:
     "National Storyline curates news directly from verified sources on X. We aim to restore trust in media through transparency.",
-    generator: 'v0.dev'
+    generator: 'v0.app'
 }
 
 export default function RootLayout({

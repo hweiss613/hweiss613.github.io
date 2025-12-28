@@ -1,0 +1,304 @@
+{
+  "storylines": [
+    {
+      "id": "censorship-hearings",
+      "title": "Congressional Censorship Hearings Intensify",
+      "summary": "House committees examine alleged government-Big Tech coordination. Major tech executives face tough questioning over content moderation practices.",
+      "category": "Politics",
+      "status": "Trending",
+      "updatedAgo": "2 hours ago",
+      "contributors": [
+        {
+          "id": "matt-taibbi",
+          "name": "Matt Taibbi",
+          "handle": "@mtaibbi",
+          "avatar": "MT"
+        },
+        {
+          "id": "bari-weiss",
+          "name": "Bari Weiss",
+          "handle": "@bariweiss",
+          "avatar": "BW"
+        },
+        {
+          "id": "glenn-greenwald",
+          "name": "Glenn Greenwald",
+          "handle": "@ggreenwald",
+          "avatar": "GG"
+        },
+        {
+          "id": "michael-shellenberger",
+          "name": "Michael Shellenberger",
+          "handle": "@ShellenbergerMD",
+          "avatar": "MS"
+        },
+        {
+          "id": "alex-berenson",
+          "name": "Alex Berenson",
+          "handle": "@AlexBerenson",
+          "avatar": "AB"
+        }
+      ],
+      "keyPosts": [
+        {
+          "id": "post-1",
+          "journalistId": "matt-taibbi",
+          "text": "The internal documents released today show systematic coordination between the FBI and Twitter to suppress legitimate political speech.",
+          "timestamp": "2 hours ago"
+        },
+        {
+          "id": "post-2",
+          "journalistId": "bari-weiss",
+          "text": "Tech executives unable to answer basic questions about algorithmic content decisions. More oversight necessary.",
+          "timestamp": "1 hour ago"
+        },
+        {
+          "id": "post-3",
+          "journalistId": "glenn-greenwald",
+          "text": "This hearing represents a historic moment for free speech in America. Congressional action is essential.",
+          "timestamp": "45 minutes ago"
+        }
+      ]
+    },
+    {
+      "id": "border-crisis",
+      "title": "Border Crisis Reaches Record Levels",
+      "summary": "Unauthorized crossings hit historic monthly high. Border patrol reports severe operational strain as processing capacity overwhelmed.",
+      "category": "Border",
+      "status": "Trending",
+      "updatedAgo": "1 hour ago",
+      "contributors": [
+        {
+          "id": "miranda-devine",
+          "name": "Miranda Devine",
+          "handle": "@mirandadevine",
+          "avatar": "MD"
+        },
+        {
+          "id": "jackson-hinkle",
+          "name": "Jackson Hinkle",
+          "handle": "@jacksonhinklle",
+          "avatar": "JH"
+        },
+        {
+          "id": "ryan-girdusky",
+          "name": "Ryan Girdusky",
+          "handle": "@RyanGirdusky",
+          "avatar": "RG"
+        }
+      ],
+      "keyPosts": [
+        {
+          "id": "post-1",
+          "journalistId": "miranda-devine",
+          "text": "CBP data shows 328,000 encounters in December alone. This is not just a statistical problem—families are suffering.",
+          "timestamp": "1 hour ago"
+        },
+        {
+          "id": "post-2",
+          "journalistId": "jackson-hinkle",
+          "text": "Cartels now openly operating border operations. American security is at stake.",
+          "timestamp": "45 minutes ago"
+        },
+        {
+          "id": "post-3",
+          "journalistId": "ryan-girdusky",
+          "text": "Local communities demand federal action. City resources exhausted by influx.",
+          "timestamp": "30 minutes ago"
+        }
+      ]
+    },
+    {
+      "id": "tech-regulation",
+      "title": "Congress Debates Tech Giant Regulation",
+      "summary": "Lawmakers propose sweeping antitrust measures. Bipartisan committee seeks to curb market dominance of Big Tech platforms.",
+      "category": "Economy",
+      "status": "Rising",
+      "updatedAgo": "3 hours ago",
+      "contributors": [
+        {
+          "id": "vivek-ramaswamy",
+          "name": "Vivek Ramaswamy",
+          "handle": "@VivekGRamaswamy",
+          "avatar": "VR"
+        },
+        {
+          "id": "david-sacks",
+          "name": "David Sacks",
+          "handle": "@DavidSacks",
+          "avatar": "DS"
+        },
+        {
+          "id": "elon-musk",
+          "name": "Elon Musk",
+          "handle": "@elonmusk",
+          "avatar": "EM"
+        }
+      ],
+      "keyPosts": [
+        {
+          "id": "post-1",
+          "journalistId": "vivek-ramaswamy",
+          "text": "Big Tech monopolies stifle innovation and free speech. Competition is the answer.",
+          "timestamp": "3 hours ago"
+        },
+        {
+          "id": "post-2",
+          "journalistId": "david-sacks",
+          "text": "The proposed regulations would restore fair competition to the tech market.",
+          "timestamp": "2.5 hours ago"
+        },
+        {
+          "id": "post-3",
+          "journalistId": "elon-musk",
+          "text": "Free speech and free markets go hand in hand.",
+          "timestamp": "2 hours ago"
+        }
+      ]
+    },
+    {
+      "id": "education-choice",
+      "title": "School Choice Movement Gains Momentum",
+      "summary": "Education bills advancing in multiple states. Parents demand alternatives to traditional public school models.",
+      "category": "Culture",
+      "status": "Stable",
+      "updatedAgo": "4 hours ago",
+      "contributors": [
+        {
+          "id": "christopher-rufo",
+          "name": "Christopher Rufo",
+          "handle": "@realchrisrufo",
+          "avatar": "CR"
+        },
+        {
+          "id": "andrew-sullivan",
+          "name": "Andrew Sullivan",
+          "handle": "@sullydish",
+          "avatar": "AS"
+        }
+      ],
+      "keyPosts": [
+        {
+          "id": "post-1",
+          "journalistId": "christopher-rufo",
+          "text": "Parents across America are demanding control over their children's education. School choice is the solution.",
+          "timestamp": "4 hours ago"
+        },
+        {
+          "id": "post-2",
+          "journalistId": "andrew-sullivan",
+          "text": "Educational freedom matters. Choice benefits all students, not just the wealthy.",
+          "timestamp": "3 hours ago"
+        }
+      ]
+    },
+    {
+      "id": "energy-independence",
+      "title": "Energy Independence Policy Debate",
+      "summary": "Administration backs domestic energy production. New proposals aim to reduce reliance on foreign oil markets.",
+      "category": "Economy",
+      "status": "Stable",
+      "updatedAgo": "5 hours ago",
+      "contributors": [
+        {
+          "id": "michael-shellenberger",
+          "name": "Michael Shellenberger",
+          "handle": "@ShellenbergerMD",
+          "avatar": "MS"
+        },
+        {
+          "id": "alex-epstein",
+          "name": "Alex Epstein",
+          "handle": "@AlexEpstein_",
+          "avatar": "AE"
+        }
+      ],
+      "keyPosts": [
+        {
+          "id": "post-1",
+          "journalistId": "michael-shellenberger",
+          "text": "Nuclear and natural gas are essential to American energy independence.",
+          "timestamp": "5 hours ago"
+        },
+        {
+          "id": "post-2",
+          "journalistId": "alex-epstein",
+          "text": "Fossil fuels have powered human progress. We need all energy sources.",
+          "timestamp": "4 hours ago"
+        }
+      ]
+    },
+    {
+      "id": "supreme-court-speech",
+      "title": "Supreme Court Hears Free Speech Case",
+      "summary": "Justices examine limits of government speech regulation. Case could reshape First Amendment protections.",
+      "category": "Politics",
+      "status": "Rising",
+      "updatedAgo": "6 hours ago",
+      "contributors": [
+        {
+          "id": "jonathan-turley",
+          "name": "Jonathan Turley",
+          "handle": "@JonathanTurley",
+          "avatar": "JT"
+        },
+        {
+          "id": "andrew-napolitano",
+          "name": "Andrew Napolitano",
+          "handle": "@NapolitanoJudge",
+          "avatar": "AN"
+        }
+      ],
+      "keyPosts": [
+        {
+          "id": "post-1",
+          "journalistId": "jonathan-turley",
+          "text": "Today's oral arguments suggest the Court takes the First Amendment seriously again.",
+          "timestamp": "6 hours ago"
+        },
+        {
+          "id": "post-2",
+          "journalistId": "andrew-napolitano",
+          "text": "This case will define free speech for a generation.",
+          "timestamp": "5.5 hours ago"
+        }
+      ]
+    },
+    {
+      "id": "mainstream-media",
+      "title": "Traditional Media Trust Declines",
+      "summary": "New surveys show historic low confidence in legacy news outlets. Viewers increasingly turn to independent sources.",
+      "category": "Culture",
+      "status": "Stable",
+      "updatedAgo": "7 hours ago",
+      "contributors": [
+        {
+          "id": "matt-taibbi",
+          "name": "Matt Taibbi",
+          "handle": "@mtaibbi",
+          "avatar": "MT"
+        },
+        {
+          "id": "james-okeefe",
+          "name": "James O'Keefe",
+          "handle": "@JamesOKeefePV",
+          "avatar": "JO"
+        }
+      ],
+      "keyPosts": [
+        {
+          "id": "post-1",
+          "journalistId": "matt-taibbi",
+          "text": "Only 31% of Americans trust mainstream media. The public is voting with their eyeballs.",
+          "timestamp": "7 hours ago"
+        },
+        {
+          "id": "post-2",
+          "journalistId": "james-okeefe",
+          "text": "Independent journalism is the future. Trust is earned through transparency.",
+          "timestamp": "6.5 hours ago"
+        }
+      ]
+    }
+  ]
+}
