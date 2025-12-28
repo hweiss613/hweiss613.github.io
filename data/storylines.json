@@ -4,8 +4,11 @@
       "id": "censorship-hearings",
       "title": "Congressional Censorship Hearings Intensify",
       "summary": "House committees examine alleged government-Big Tech coordination. Major tech executives face tough questioning over content moderation practices.",
+      "whyItMatters": "This investigation could reshape First Amendment protections and government-tech relationships for years to come.",
+      "region": "NATIONAL",
       "category": "Politics",
-      "status": "Trending",
+      "importanceLevel": 1,
+      "status": "Developing",
       "updatedAgo": "2 hours ago",
       "contributors": [
         {
@@ -64,8 +67,11 @@
       "id": "border-crisis",
       "title": "Border Crisis Reaches Record Levels",
       "summary": "Unauthorized crossings hit historic monthly high. Border patrol reports severe operational strain as processing capacity overwhelmed.",
+      "whyItMatters": "This impacts federal budget allocation, local community resources, and international relations with neighboring countries.",
+      "region": "SOUTHERN BORDER",
       "category": "Border",
-      "status": "Trending",
+      "importanceLevel": 2,
+      "status": "Developing",
       "updatedAgo": "1 hour ago",
       "contributors": [
         {
@@ -112,8 +118,11 @@
       "id": "tech-regulation",
       "title": "Congress Debates Tech Giant Regulation",
       "summary": "Lawmakers propose sweeping antitrust measures. Bipartisan committee seeks to curb market dominance of Big Tech platforms.",
+      "whyItMatters": "These regulations could reshape market competition, affect consumer privacy, and influence innovation across the tech sector.",
+      "region": "NATIONAL",
       "category": "Economy",
-      "status": "Rising",
+      "importanceLevel": 3,
+      "status": "Gaining Attention",
       "updatedAgo": "3 hours ago",
       "contributors": [
         {
@@ -160,8 +169,11 @@
       "id": "education-choice",
       "title": "School Choice Movement Gains Momentum",
       "summary": "Education bills advancing in multiple states. Parents demand alternatives to traditional public school models.",
+      "whyItMatters": "This reflects growing tension between parental rights and institutional control, with implications for public education funding.",
+      "region": "MULTIPLE STATES",
       "category": "Culture",
-      "status": "Stable",
+      "importanceLevel": 4,
+      "status": "Stabilizing",
       "updatedAgo": "4 hours ago",
       "contributors": [
         {
@@ -196,8 +208,11 @@
       "id": "energy-independence",
       "title": "Energy Independence Policy Debate",
       "summary": "Administration backs domestic energy production. New proposals aim to reduce reliance on foreign oil markets.",
+      "whyItMatters": "Energy policy decisions affect inflation, national security, and environmental considerations across the country.",
+      "region": "NATIONAL",
       "category": "Economy",
-      "status": "Stable",
+      "importanceLevel": 5,
+      "status": "Stabilizing",
       "updatedAgo": "5 hours ago",
       "contributors": [
         {
@@ -232,8 +247,11 @@
       "id": "supreme-court-speech",
       "title": "Supreme Court Hears Free Speech Case",
       "summary": "Justices examine limits of government speech regulation. Case could reshape First Amendment protections.",
+      "whyItMatters": "The Court's decision will set precedent for free speech protections affecting journalists, activists, and citizens nationwide.",
+      "region": "NATIONAL",
       "category": "Politics",
-      "status": "Rising",
+      "importanceLevel": 6,
+      "status": "Gaining Attention",
       "updatedAgo": "6 hours ago",
       "contributors": [
         {
@@ -268,8 +286,11 @@
       "id": "mainstream-media",
       "title": "Traditional Media Trust Declines",
       "summary": "New surveys show historic low confidence in legacy news outlets. Viewers increasingly turn to independent sources.",
+      "whyItMatters": "Declining trust in institutional media shapes how Americans access information and form opinions about national events.",
+      "region": "NATIONAL",
       "category": "Culture",
-      "status": "Stable",
+      "importanceLevel": 7,
+      "status": "Stabilizing",
       "updatedAgo": "7 hours ago",
       "contributors": [
         {

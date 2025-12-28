@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input"
 import { useTwitterData } from "@/hooks/use-twitter-data"
 import { BriefingCard } from "@/components/briefing-card"
 import { EmailCapture } from "@/components/email-capture"
-import type { ProcessedTweet, Storyline } from "@/lib/types"
+import type { Storyline } from "@/lib/types"
 
 import storylinesData from "@/data/storylines.json"
 
@@ -34,7 +34,9 @@ export default function Home() {
     }
   }, [])
 
-  const allStorylines: Storyline[] = storylinesData.storylines
+  const allStorylines: Storyline[] = useMemo(() => {
+    return storylinesData.storylines.sort((a, b) => a.importanceLevel - b.importanceLevel)
+  }, [])
 
   const menuItems = [
     { id: "all", label: "All Storylines", category: "all" },
@@ -44,27 +46,13 @@ export default function Home() {
     { id: "border", label: "Border", category: "Border" },
   ]
 
-  // Filter tweets based on search query
-  const filteredTweets = useMemo(() => {
-    if (!searchQuery) return tweets
-
-    return tweets.filter(
-      (tweet) =>
-        tweet.content.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        tweet.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-        tweet.handle.toLowerCase().includes(searchQuery.toLowerCase()),
-    )
-  }, [tweets, searchQuery])
-
   const filteredStorylines = useMemo(() => {
     let results = allStorylines
 
-    // Filter by category
     if (activeFilter !== "all") {
       results = results.filter((storyline) => storyline.category === activeFilter)
     }
 
-    // Filter by search query
     if (searchQuery) {
       results = results.filter(
         (storyline) =>
@@ -75,6 +63,10 @@ export default function Home() {
 
     return results
   }, [activeFilter, searchQuery])
+
+  const leadStory = filteredStorylines.length > 0 ? filteredStorylines[0] : null
+  const secondaryStories = filteredStorylines.slice(1, 3)
+  const additionalStories = filteredStorylines.slice(3)
 
   // Toggle bookmark
   const toggleBookmark = (tweetId: string) => {
@@ -87,7 +79,7 @@ export default function Home() {
   }
 
   // Share functions
-  const handleShare = (tweet: ProcessedTweet, platform: "x" | "telegram" | "copy") => {
+  const handleShare = (tweet: any, platform: "x" | "telegram" | "copy") => {
     switch (platform) {
       case "x":
         const tweetText = `Check out this post from ${tweet.name}: "${tweet.content.substring(0, 100)}..."`
@@ -168,6 +160,7 @@ export default function Home() {
         </div>
       </header>
 
+      {/* Hero section */}
       <div className="bg-primary text-primary-foreground">
         <div className="container mx-auto px-4 md:px-6 py-12 md:py-16">
           <div className="max-w-3xl">
@@ -180,13 +173,42 @@ export default function Home() {
         </div>
       </div>
 
+      {/* Main content */}
       <main className="container mx-auto px-4 md:px-6 py-12 md:py-16">
         {filteredStorylines.length > 0 ? (
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-12">
-            {filteredStorylines.slice(0, 6).map((storyline) => (
-              <BriefingCard key={storyline.id} storyline={storyline} />
-            ))}
-          </div>
+          <>
+            {/* Lead story - full width */}
+            {leadStory && (
+              <div className="mb-12 md:mb-16">
+                <BriefingCard storyline={leadStory} variant="lead" />
+              </div>
+            )}
+
+            {/* Secondary stories - 2-3 cards */}
+            {secondaryStories.length > 0 && (
+              <div className="mb-12 md:mb-16">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+                  {secondaryStories.map((storyline) => (
+                    <BriefingCard key={storyline.id} storyline={storyline} variant="secondary" />
+                  ))}
+                </div>
+              </div>
+            )}
+
+            {/* Additional stories section */}
+            {additionalStories.length > 0 && (
+              <div className="mb-12 md:mb-16">
+                <div className="mb-6 md:mb-8">
+                  <h3 className="font-serif text-lg md:text-xl text-muted-foreground">More Developing Stories ↓</h3>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+                  {additionalStories.map((storyline) => (
+                    <BriefingCard key={storyline.id} storyline={storyline} variant="additional" />
+                  ))}
+                </div>
+              </div>
+            )}
+          </>
         ) : (
           <div className="text-center py-20">
             <p className="text-muted-foreground mb-6 text-lg">No storylines match your search.</p>
@@ -203,15 +225,17 @@ export default function Home() {
           </div>
         )}
 
+        {/* Email capture */}
         <section className="bg-secondary/30 border border-border rounded-sm p-8 md:p-12 max-w-2xl mx-auto mb-12">
           <h2 className="font-serif text-2xl md:text-3xl text-foreground mb-4">Stay Informed</h2>
           <p className="text-muted-foreground mb-6">
-            Get daily briefings delivered to your inbox. Curated independent journalism without the noise.
+            Daily briefings delivered to your inbox. Curated independent journalism without the noise.
           </p>
           <EmailCapture />
         </section>
       </main>
 
+      {/* Footer */}
       <footer className="bg-primary text-primary-foreground border-t border-border mt-16">
         <div className="container mx-auto px-4 md:px-6 py-12 md:py-16">
           <div className="max-w-3xl">

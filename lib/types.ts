@@ -16,8 +16,11 @@ export interface Storyline {
   id: string
   title: string
   summary: string
+  region: string
+  whyItMatters: string
+  importanceLevel: number
   category: string
-  status: "Trending" | "Rising" | "Stable"
+  status: "Developing" | "Gaining Attention" | "Stabilizing"
   updatedAgo: string
   contributors: Contributor[]
   keyPosts: KeyPost[]
